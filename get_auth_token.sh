@@ -2,6 +2,10 @@
 # set filename with private service info in json as first argument
 
 SERVICE_ACCOUNT_KEY_FILE=$1
+if [ -z $SERVICE_ACCOUNT_KEY_FILE ]; then
+  echo "you need set service account key file as first argument"
+  exit 1
+fi
 
 
 BASE64URL_ENCODER="./base64url"
@@ -45,7 +49,7 @@ GRANT_TYPE="grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer"
 OUTPUT=$(curl \
   --header "Content-Type: application/x-www-form-urlencoded" \
   --data "$GRANT_TYPE&assertion=$JWT_FULL" \
-  "https://oauth2.googleapis.com/token")
+  $TOKEN_URI)
 
 TOKEN=$(echo $OUTPUT | $TOKEN_GETTER)
 echo $TOKEN
