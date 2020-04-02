@@ -1,0 +1,9 @@
+#!/bin/luajit
+
+local base64url_encoder = require("basexx").to_url64
+
+local str = io.read("*a")
+
+local out = base64url_encoder(str)
+
+print(out)

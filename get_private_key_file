@@ -1,0 +1,20 @@
+#!/bin/lua
+--@script get signature account json as input and return name of file with private rsa key
+
+local cjson = require("cjson")
+
+local input = io.read("*a")
+
+local signature = cjson.decode(input)
+
+if type(signature.private_key) ~= string then
+  local tmp_file_name = os.tmpname()
+
+  local file = io.open(tmp_file_name, "w")
+  file:write(signature.private_key)
+  file:close()
+
+  print(tmp_file_name)
+else
+  error("can not get private key")
+end

@@ -1,0 +1,15 @@
+#!/bin/lua
+
+-- @script set service file as input and get token_uri in output
+--
+local cjson = require("cjson")
+
+local str = io.read("*a")
+
+local t = cjson.decode(str)
+
+if type(t.token_uri) == "string" then
+  print(t.token_uri)
+else
+  error("coudn't get token uri")
+end

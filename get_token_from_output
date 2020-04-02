@@ -1,0 +1,14 @@
+#!/bin/lua
+
+local cjson = require("cjson")
+
+local input = io.read("*a")
+
+local t = cjson.decode(input)
+
+if type(t.access_token) == "string" and t.token_type == "Bearer" then
+  local token = t.access_token
+  print(token)
+else
+  error("invalid token")
+end
