@@ -28,7 +28,7 @@ REQUEST_TIME=$((CURRENT_TIME + ONE_MINUTE))
 JWT_HEADER='{"alg":"RS256","typ":"JWT"}'
 JWT_CLAIM="{
   \"iss\":\"$SERVICE_ACCOUNT\",
-  \"scope\":\"https://www.googleapis.com/auth/firebase.messaging\",
+  \"scope\":\"https://www.googleapis.com/auth/firebase.messaging email\",
   \"aud\":\"$TOKEN_URI\",
   \"exp\":$REQUEST_TIME,
   \"iat\":$CURRENT_TIME
