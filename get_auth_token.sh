@@ -46,7 +46,7 @@ JWT_FULL=$JWT_HEADER_ENCODED"."$JWT_CLAIM_ENCODED"."$JWT_SIGNATURE_ENCODED
 
 # get oauth2 token
 GRANT_TYPE="grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer"
-OUTPUT=$(curl \
+OUTPUT=$(curl -X POST \
   --header "Content-Type: application/x-www-form-urlencoded" \
   --data "$GRANT_TYPE&assertion=$JWT_FULL" \
   $TOKEN_URI)
