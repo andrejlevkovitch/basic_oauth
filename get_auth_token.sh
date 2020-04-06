@@ -34,8 +34,8 @@ JWT_CLAIM="{
   \"iat\":$CURRENT_TIME
 }"
 
-JWT_HEADER_ENCODED=$(echo $JWT_HEADER | $BASE64URL_ENCODER)
-JWT_CLAIM_ENCODED=$(echo $JWT_CLAIM | $BASE64URL_ENCODER)
+JWT_HEADER_ENCODED=$(printf "$JWT_HEADER" | $BASE64URL_ENCODER)
+JWT_CLAIM_ENCODED=$(printf "$JWT_CLAIM" | $BASE64URL_ENCODER)
 
 # create signature for JWS
 # XXX not use echo, because echo append \n character in teh end, so JWT signature will be invalid
